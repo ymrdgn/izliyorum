@@ -17,7 +17,7 @@ const Header = () => {
     const { textStyling, viewStyle } = styles;
     return (
         <View style={viewStyle}>
-            <Text style={textStyling}>izli'yorum</Text>
+            <Text style={textStyling}>izli'yorum..</Text>
         </View>
     );
 }
