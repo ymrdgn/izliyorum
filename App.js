@@ -4,23 +4,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import DrawerNavigation from "./src/Navigations/DrawerNavigation";
 import SignIn from "./src/Screens/SignIn";
 import SignUp from "./src/Screens/SignUp";
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import Home from "./src/Screens/Home";
-// import Details from "./src/Screens/Details";
 
 const Stack = createNativeStackNavigator();
-
-// const Tab = createBottomTabNavigator();
-
-// function MyTabs() {
-//   return (
-//     <Tab.Navigator>
-//       <Tab.Screen name="Home" component={Home} />
-//       <Tab.Screen name="Details" component={Details} />
-//     </Tab.Navigator>
-//   );
-// }
-
 
 export default function App() {
   const userToken = true;
@@ -43,10 +28,6 @@ export default function App() {
           )}
         </Stack.Navigator>
       </NavigationContainer>
-      {/* <NavigationContainer>
-        <MyTabs />
-      </NavigationContainer> */}
     </>
-
   );
 }
