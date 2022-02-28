@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../Screens/Home";
+import Settings from "../Screens/Settings";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 const Tab = createBottomTabNavigator();
@@ -25,6 +26,11 @@ export default function TabNavigation() {
       <Tab.Screen
         name="Home"
         component={Home}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
         options={{ headerShown: false }}
       />
     </Tab.Navigator>
