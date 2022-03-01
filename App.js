@@ -20,11 +20,13 @@ export default function App() {
               <Stack.Screen name="SignIn" component={SignIn} />
             </>
           ) : (
-            <Stack.Screen
-              name={"Home"}
-              options={{ headerShown: false }}
-              component={DrawerNavigation}
-            />
+            <>
+              <Stack.Screen
+                name={"Home"}
+                options={{ headerShown: false }}
+                component={DrawerNavigation}
+              />
+            </>
           )}
         </Stack.Navigator>
       </NavigationContainer>
