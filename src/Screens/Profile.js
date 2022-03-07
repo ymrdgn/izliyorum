@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Image,
@@ -7,8 +7,14 @@ import {
   StyleSheet,
   ScrollView,
 } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import MyReviews from "./MyReviews";
+import MyWall from "./MyWall";
+import MyQuotes from "./MyQuotes";
 
 export default function Profile() {
+  const [activeTab, setActiveTab] = useState("Duvarım");
+
   return (
     <ScrollView>
       <Image
@@ -38,9 +44,85 @@ export default function Profile() {
           <Text style={{ color: "white" }}>unalercann@gmail.com</Text>
         </View>
       </View>
+      <View
+        style={{
+          flexDirection: "row",
+          alignSelf: "center",
+          paddingTop: 10,
+          paddingBottom: 10,
+        }}
+      >
+        <Text style={{ paddingVertical: 6, paddingHorizontal: 6 }}>
+          İzledim (100)
+        </Text>
+        <Text style={{ paddingVertical: 6, paddingHorizontal: 6 }}>
+          İzleyeceğim (12)
+        </Text>
+        <Text style={{ paddingVertical: 6, paddingHorizontal: 6 }}>
+          İzliyorum (4)
+        </Text>
+      </View>
+
+      <View
+        style={{
+          flexDirection: "row",
+          paddingTop: 15,
+          alignSelf: "center",
+          backgroundColor: "white",
+        }}
+      >
+        <SubTabBtn
+          text="Duvarım"
+          btnColor="black"
+          textColor="white"
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+        <SubTabBtn
+          text="İncelemelerim"
+          btnColor="white"
+          textColor="black"
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+        <SubTabBtn
+          text="Alıntılarım"
+          btnColor="white"
+          textColor="black"
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+      </View>
+      <View style={{ marginTop: 15, flexDirection: "row" }}>
+        {activeTab === "Duvarım" && <MyWall />}
+        {activeTab === "İncelemelerim" && <MyReviews />}
+        {activeTab === "Alıntılarım" && <MyQuotes />}
+      </View>
     </ScrollView>
   );
 }
+
+const SubTabBtn = (props) => (
+  <TouchableOpacity
+    style={{
+      backgroundColor: props.activeTab === props.text ? "black" : "white",
+      paddingVertical: 6,
+      paddingHorizontal: 16,
+      borderTopRightRadius: 30,
+    }}
+    onPress={() => props.setActiveTab(props.text)}
+  >
+    <Text
+      style={{
+        color: props.activeTab === props.text ? "white" : "black",
+        fontSize: 12,
+        fontWeight: "900",
+      }}
+    >
+      {props.text}
+    </Text>
+  </TouchableOpacity>
+);
 
 const styles = StyleSheet.create({
   coverImg: {
