@@ -66,7 +66,7 @@ export default function Profile() {
       <View
         style={{
           flexDirection: "row",
-          paddingTop: 15,
+          paddingTop: 14,
           alignSelf: "center",
           backgroundColor: "white",
         }}
