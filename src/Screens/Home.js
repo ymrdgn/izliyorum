@@ -3,32 +3,42 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import HomePostCardItem from "../Components/HomePostCardItem";
 import { useOmdb } from "../hooks/useOmdb";
+import { SearchBar } from "react-native-elements";
 
 export default function Home() {
-  const {getByName, getById} = useOmdb();
+  const { getByName, getById } = useOmdb();
   const [id, setId] = useState("");
-
-  
+  const [search, setSearch] = useState(null);
 
   useEffect(() => {
-    getByName("volver").then(response=>
-      {console.log("response",response);
-      setId(response.Search[0].imdbID)
+    getByName("volver").then((response) => {
+      setId(response.Search[0].imdbID);
     });
   }, []);
 
-  const getMovie =()=>{
-    getById(id).then(response => console.log(response))
-  }
-  
+  const getMovie = () => {
+    getById(id).then((response) => console.log(response));
+  };
+
+  const textSearch = (search) => {
+    setSearch(search);
+  };
 
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Text>Home Screen hbhbbhb</Text>
-        <TouchableOpacity onPress={()=>getMovie()}>
-         <Text>VOLVER</Text> 
-          </TouchableOpacity>
+        <View>
+          <SearchBar
+            placeholder="Ara..."
+            onChangeText={textSearch}
+            value={search}
+            onKeyPress={(keyPress) => console.log(keyPress)}
+          />
+        </View>
+        {/* <Text>{search}</Text> */}
+        <TouchableOpacity onPress={() => getMovie()}>
+          <Text>VOLVER</Text>
+        </TouchableOpacity>
         <HomePostCardItem />
       </ScrollView>
     </View>
