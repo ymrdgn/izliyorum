@@ -8,16 +8,19 @@ import { SearchBar } from "react-native-elements";
 export default function Home() {
   const { getByName, getById } = useOmdb();
   const [id, setId] = useState("");
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState();
 
   useEffect(() => {
-    getByName("volver").then((response) => {
+    getByName(search).then((response) => {
       setId(response.Search[0].imdbID);
     });
   }, []);
 
   const getMovie = () => {
-    getById(id).then((response) => console.log(response));
+    setSearch(search);
+    if(search){
+      getById(id).then((response) => console.log(response));
+    }
   };
 
   const textSearch = (search) => {
@@ -32,12 +35,12 @@ export default function Home() {
             placeholder="Ara..."
             onChangeText={textSearch}
             value={search}
-            onKeyPress={(keyPress) => console.log(keyPress)}
+            // onKeyPress={(keyPress) => console.log(keyPress)}
           />
         </View>
         {/* <Text>{search}</Text> */}
         <TouchableOpacity onPress={() => getMovie()}>
-          <Text>VOLVER</Text>
+          <Text>Ara</Text>
         </TouchableOpacity>
         <HomePostCardItem />
       </ScrollView>
