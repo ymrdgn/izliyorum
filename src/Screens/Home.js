@@ -5,6 +5,7 @@ import HomePostCardItem from "../Components/HomePostCardItem";
 import { useOmdb } from "../hooks/useOmdb";
 import { SearchBar } from "react-native-elements";
 // import { Autocomplete } from "react-native-autocomplete-input";
+import { Card } from "react-native-elements";
 
 export default function Home() {
   const { getByName, getById } = useOmdb();
@@ -40,35 +41,53 @@ export default function Home() {
             placeholder="Ara..."
             onChangeText={textSearch}
             value={search}
-            onKeyPress={(keyPress) => console.log(keyPress)}
+            // onKeyPress={(keyPress) => console.log(keyPress)}
           />
-          {/* <Autocomplete
-            data={movieList}
-            value={search}
-            onChangeText={textSearch}
-            flatListProps={{
-              keyExtractor: (_, idx) => idx,
-              renderItem: ({ item }) => <Text>{item}</Text>,
-            }}
-          /> */}
           <TouchableOpacity onPress={() => getMovie()}>
             <Text>Ara</Text>
           </TouchableOpacity>
         </View>
+        {movieList && (
+          <View>
+            {movieList.map((item, i) => (
+              <TouchableOpacity onPress={() => getSelectedMovie(item.imdbID)}>
+                <Card key={i}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      paddingTop: 10,
+                      paddingBottom: 10,
+                    }}
+                  >
+                    <Card.Image
+                      style={{ width: 80, height: 100 }}
+                      source={{
+                        uri: item.Poster,
+                      }}
+                    />
+                    <Text>{item.Title}</Text>
+                    <Text>{item.Year}</Text>
+                  </View>
+                  {/* <Button buttonStyle={{ backgroundColor: "red" }} title="VIEW NOW" /> */}
+                </Card>
+              </TouchableOpacity>
+            ))}
+          </View>
+        )}
 
-        <View style={{ backgroundColor: "white" }}>
-          {movieList && (
+        <View style={{ backgroundColor: "red", color: "white" }}>
+          {selectedMovieInfos && (
             <>
-              {movieList.map((item, i) => (
-                <TouchableOpacity onPress={() => getSelectedMovie(item.imdbID)}>
-                  <Text key={i}>{item.Title}</Text>
-                </TouchableOpacity>
-              ))}
+            {console.log(selectedMovieInfos)}
+              <Text>{selectedMovieInfos.Title}</Text>
+              <Text>{selectedMovieInfos.Year}</Text>
+              <Text>{selectedMovieInfos.imdbRating}</Text>
+              <Text>{selectedMovieInfos.Country}</Text>
+              <Text>{selectedMovieInfos.Genre}</Text>
+              <Text>{selectedMovieInfos.Director}</Text>
+              <Text>{selectedMovieInfos.Actors}</Text>
             </>
           )}
-        </View>
-        <View style={{ backgroundColor: "red", color: "white" }}>
-          {selectedMovieInfos && selectedMovieInfos.Title}
         </View>
         {/* <Text>{search}</Text> */}
         <HomePostCardItem />
