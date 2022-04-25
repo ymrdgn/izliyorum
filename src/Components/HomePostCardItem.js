@@ -5,7 +5,6 @@ import { Card, Button } from "react-native-elements";
 export default function HomePostCardItem() {
   return (
     <View>
-      <Text>Ana sayfa kartlarım</Text>
       <Card>
         <View
           style={{
