@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Button } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import HomePostCardItem from "../Components/HomePostCardItem";
 import { useOmdb } from "../hooks/useOmdb";
 import { SearchBar } from "react-native-elements";
 // import { Autocomplete } from "react-native-autocomplete-input";
 import { Card } from "react-native-elements";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
-export default function Home() {
+export default function Home({ navigation }) {
   const { getByName, getById } = useOmdb();
   const [id, setId] = useState("");
   const [search, setSearch] = useState();
   const [movieList, setMovieList] = useState();
-  const [selectedMovieInfos, setSelectedMovieInfos] = useState();
 
   useEffect(() => {}, []);
 
@@ -27,12 +27,6 @@ export default function Home() {
     setSearch(search);
   };
 
-  const getSelectedMovie = (id) => {
-    getById(id).then((response) => {
-      setSelectedMovieInfos(response);
-    });
-  };
-
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -41,16 +35,22 @@ export default function Home() {
             placeholder="Ara..."
             onChangeText={textSearch}
             value={search}
-            // onKeyPress={(keyPress) => console.log(keyPress)}
+            onSubmitEditing={() => getMovie()}
+            searchIcon={
+              <TouchableOpacity onPress={() => getMovie()}>
+                <Ionicons name="ios-search-circle" size={30} color="red" />
+              </TouchableOpacity>
+            }
           />
-          <TouchableOpacity onPress={() => getMovie()}>
-            <Text>Ara</Text>
-          </TouchableOpacity>
         </View>
         {movieList && (
           <View>
             {movieList.map((item, i) => (
-              <TouchableOpacity onPress={() => getSelectedMovie(item.imdbID)}>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("Details", { id: item.imdbID })
+                }
+              >
                 <Card key={i}>
                   <View
                     style={{
@@ -75,20 +75,6 @@ export default function Home() {
           </View>
         )}
 
-        <View style={{ backgroundColor: "red", color: "white" }}>
-          {selectedMovieInfos && (
-            <>
-            {console.log(selectedMovieInfos)}
-              <Text>{selectedMovieInfos.Title}</Text>
-              <Text>{selectedMovieInfos.Year}</Text>
-              <Text>{selectedMovieInfos.imdbRating}</Text>
-              <Text>{selectedMovieInfos.Country}</Text>
-              <Text>{selectedMovieInfos.Genre}</Text>
-              <Text>{selectedMovieInfos.Director}</Text>
-              <Text>{selectedMovieInfos.Actors}</Text>
-            </>
-          )}
-        </View>
         {/* <Text>{search}</Text> */}
         <HomePostCardItem />
       </ScrollView>
