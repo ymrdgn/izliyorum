@@ -25,6 +25,7 @@ export default function App() {
                 name={"Home"}
                 options={{ headerShown: false }}
                 component={DrawerNavigation}
+                styles={{backgroundColor:"blue"}}
               />
             </>
           )}
