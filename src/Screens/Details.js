@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { useOmdb } from "../hooks/useOmdb";
+import { Card } from "react-native-elements";
 
 export default function Details({ route }) {
   const [selectedMovieInfos, setSelectedMovieInfos] = useState();
@@ -20,21 +21,33 @@ export default function Details({ route }) {
 
   return (
     <View>
-      <Text>Details Screenbb</Text>
-      <View style={{ backgroundColor: "red", color: "white" }}>
-        {selectedMovieInfos && (
-          <>
-            {console.log(selectedMovieInfos)}
-            <Text>{selectedMovieInfos.Title}</Text>
-            <Text>{selectedMovieInfos.Year}</Text>
-            <Text>{selectedMovieInfos.imdbRating}</Text>
-            <Text>{selectedMovieInfos.Country}</Text>
-            <Text>{selectedMovieInfos.Genre}</Text>
-            <Text>{selectedMovieInfos.Director}</Text>
-            <Text>{selectedMovieInfos.Actors}</Text>
-          </>
-        )}
-      </View>
+      {selectedMovieInfos && (
+
+          <Card>
+            <View
+              className="detail-poster-card"
+              style={{flexDirection: "row" }}
+            >
+              <View style={{ width: "40%" }}>
+                <Card.Image
+                  style={{ width: 80, height: 100 }}
+                  source={{
+                    uri: selectedMovieInfos.Poster,
+                  }}
+                />
+              </View>
+              <View style={{ width: "60%" }}>
+                <Text style={{fontSize:"14px"}}><b>{selectedMovieInfos.Title}</b></Text>
+                <Text>{selectedMovieInfos.Year}</Text>
+                <Text><b>IMDB:</b> {selectedMovieInfos.imdbRating}</Text>
+                <Text><b>Ülke: </b>{selectedMovieInfos.Country}</Text>
+                <Text><b>Tür:</b> {selectedMovieInfos.Genre}</Text>
+                <Text><b>Yönetmen: </b>{selectedMovieInfos.Director}</Text>
+                <Text><b>Oyuncular:</b> {selectedMovieInfos.Actors}</Text>
+              </View>
+            </View>
+          </Card>
+      )}
     </View>
   );
 }
