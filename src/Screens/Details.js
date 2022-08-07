@@ -43,7 +43,7 @@ export default function Details({ route }) {
                 <Text><b>Ülke: </b>{selectedMovieInfos.Country}</Text>
                 <Text><b>Tür:</b> {selectedMovieInfos.Genre}</Text>
                 <Text><b>Yönetmen: </b>{selectedMovieInfos.Director}</Text>
-                <Text><b>Oyuncular:</b> {selectedMovieInfos.Actors}</Text>
+                <Text><b>Oyuncular vsvfdvfdvf:</b> {selectedMovieInfos.Actors}</Text>
               </View>
             </View>
           </Card>
