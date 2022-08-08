@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Button,
   SafeAreaView,
+  Image,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import HomePostCardItem from "../Components/HomePostCardItem";
@@ -68,40 +69,53 @@ export default function Home({ navigation }) {
               }
             />
           </View>
-          {movieList && (
-            <View>
-              {movieList.map((item, i) => (
-                <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate("Details", { id: item.imdbID })
-                  }
-                >
-                  <Card key={i}>
-                    <View
-                      style={{
-                        flexDirection: "row",
-                        paddingTop: 10,
-                        paddingBottom: 10,
-                      }}
-                    >
-                      <Card.Image
-                        style={{ width: 80, height: 100 }}
-                        source={{
-                          uri: item.Poster,
-                        }}
-                      />
-                      <Text>{item.Title}</Text>
-                      <Text>{item.Year}</Text>
-                    </View>
-                    {/* <Button buttonStyle={{ backgroundColor: "red" }} title="VIEW NOW" /> */}
-                  </Card>
-                </TouchableOpacity>
-              ))}
-            </View>
-          )}
+          {movieList &&
+            // <View>
+            //   {movieList.map((item, i) => (
+            //     <TouchableOpacity
+            //       onPress={() =>
+            //         navigation.navigate("Details", { id: item.imdbID })
+            //       }
+            //     >
+            //       <Card key={i}>
+            //         <View>
+            //           <Card.Image
+            //             source={{
+            //               uri: item.Poster,
+            //             }}
+            //           />
+            //           <Text>{item.Title}</Text>
+            //           <Text>{item.Year}</Text>
+            //         </View>
+            //         {/* <Button buttonStyle={{ backgroundColor: "red" }} title="VIEW NOW" /> */}
+            //       </Card>
+            //     </TouchableOpacity>
+            //   ))}
+            // </View>
+
+            movieList.map((item, i) => (
+              <View
+                style={{
+                  backgroundColor: "#303337",
+                  borderRadius: "5px",
+                  marginBottom: "15px",
+                  margin: "15px",
+                }}
+              >
+                <View style={{ width: "100%", height: "150px" }}>
+                  <Image
+                    source={item.Poster}
+                    style={{ width: "40%", height: "100%" }}
+                    resizeMode="contain"
+                  />
+                  
+                </View>
+                <Text>{item.Title}</Text>
+              </View>
+            ))}
 
           {/* <Text>{search}</Text> */}
-          <HomePostCardItem />
+          {/* <HomePostCardItem /> */}
         </ScrollView>
       </View>
     </>
