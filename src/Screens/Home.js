@@ -57,6 +57,7 @@ export default function Home({ navigation }) {
                 border: "none",
                 borderRadius: "30px",
                 height: "30px",
+                marginBottom:"5px"
               }}
               inputContainerStyle={{
                 borderRadius: "30px",
@@ -98,19 +99,24 @@ export default function Home({ navigation }) {
                 style={{
                   backgroundColor: "#303337",
                   borderRadius: "5px",
-                  marginBottom: "15px",
-                  margin: "15px",
+                  margin: "5px",
+                  flex: 1,
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  padding:"5px"
                 }}
               >
-                <View style={{ width: "100%", height: "150px" }}>
+                <View style={{ width: "100%", height: "50px", flex: "0.2" }}>
                   <Image
                     source={item.Poster}
-                    style={{ width: "40%", height: "100%" }}
+                    style={{ height: "100%"}}
                     resizeMode="contain"
                   />
-                  
                 </View>
-                <Text>{item.Title}</Text>
+                <View style={{ flex: "0.8" }}>
+                  <Text style={{color:"white"}}>{item.Title}</Text>
+                  <Text style={{color:"#86939e"}}>{item.Year}</Text>
+                </View>
               </View>
             ))}
 
