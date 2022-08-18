@@ -16,16 +16,19 @@ import { SearchBar } from "react-native-elements";
 import { Card } from "react-native-elements";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Header from "../Components/Header";
-
+import { useIsFocused } from "@react-navigation/native";
 export default function Home({ navigation }) {
   const { getByName, getById } = useOmdb();
   const [id, setId] = useState("");
   const [search, setSearch] = useState();
   const [movieList, setMovieList] = useState();
-
+  const isFocused = useIsFocused();
+  
   useEffect(() => {
     console.log(id);
-  }, []);
+    setMovieList([]);
+    setSearch("");
+  }, [isFocused]);
 
   const getMovie = () => {
     getByName(search).then((response) => {
@@ -57,7 +60,7 @@ export default function Home({ navigation }) {
                 border: "none",
                 borderRadius: "30px",
                 height: "30px",
-                marginBottom:"5px"
+                marginBottom: "5px"
               }}
               inputContainerStyle={{
                 borderRadius: "30px",
@@ -95,7 +98,10 @@ export default function Home({ navigation }) {
             // </View>
 
             movieList.map((item, i) => (
-              <View
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("Details", { id: item.imdbID })
+                }
                 style={{
                   backgroundColor: "#303337",
                   borderRadius: "5px",
@@ -103,21 +109,21 @@ export default function Home({ navigation }) {
                   flex: 1,
                   flexDirection: "row",
                   flexWrap: "wrap",
-                  padding:"5px"
+                  padding: "5px"
                 }}
               >
                 <View style={{ width: "100%", height: "50px", flex: "0.2" }}>
                   <Image
                     source={item.Poster}
-                    style={{ height: "100%"}}
+                    style={{ height: "100%" }}
                     resizeMode="contain"
                   />
                 </View>
                 <View style={{ flex: "0.8" }}>
-                  <Text style={{color:"white"}}>{item.Title}</Text>
-                  <Text style={{color:"#86939e"}}>{item.Year}</Text>
+                  <Text style={{ color: "white" }}>{item.Title}</Text>
+                  <Text style={{ color: "#86939e" }}>{item.Year}</Text>
                 </View>
-              </View>
+              </TouchableOpacity>
             ))}
 
           {/* <Text>{search}</Text> */}
