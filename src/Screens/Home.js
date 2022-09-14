@@ -25,7 +25,6 @@ export default function Home({ navigation }) {
   const isFocused = useIsFocused();
   
   useEffect(() => {
-    console.log(id);
     setMovieList([]);
     setSearch("");
   }, [isFocused]);
@@ -43,9 +42,9 @@ export default function Home({ navigation }) {
 
   return (
     <>
-      <SafeAreaView>
+      {/* <SafeAreaView>
         <Header />
-      </SafeAreaView>
+      </SafeAreaView> */}
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View>

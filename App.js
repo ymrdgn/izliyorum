@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import DrawerNavigation from "./src/Navigations/DrawerNavigation";
 import SignIn from "./src/Screens/SignIn";
 import SignUp from "./src/Screens/SignUp";
+import { View, Text } from "react-native";
+import Homepage from "./src/Screens/HomePage";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,13 +27,15 @@ export default function App() {
                 name={"Home"}
                 options={{ headerShown: false }}
                 component={DrawerNavigation}
-                styles={{backgroundColor:"blue"}}
               />
             </>
           )}
         </Stack.Navigator>
       </NavigationContainer>
     </>
+    // <View style={{ backgroundColor: "#1e1e1e" }}>
+    //   <Homepage />
+    // </View>
   );
 }
 

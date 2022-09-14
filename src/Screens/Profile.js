@@ -16,89 +16,91 @@ export default function Profile() {
   const [activeTab, setActiveTab] = useState("Duvarım");
 
   return (
-    <ScrollView>
-      <Image
-        style={styles.coverImg}
-        source={{ uri: "https://bit.ly/3hrT4d2" }}
-      />
-      <View
-        style={{
-          position: "absolute",
-          zIndex: 5,
-          top: 82,
-          left: 25,
-          display: "flex",
-          flexDirection: "row",
-        }}
-      >
+    <View style={styles.container}>
+      <ScrollView>
         <Image
-          style={{ width: 80, height: 80, borderRadius: 40 }}
-          source={{
-            uri: "https://avatars.githubusercontent.com/u/44919993?v=4",
+          style={styles.coverImg}
+          source={{ uri: "https://bit.ly/3hrT4d2" }}
+        />
+        <View
+          style={{
+            position: "absolute",
+            zIndex: 5,
+            top: 82,
+            left: 25,
+            display: "flex",
+            flexDirection: "row",
           }}
-        />
-        <View style={{ marginLeft: 15, marginTop: 25 }}>
-          <Text style={{ color: "white", fontWeight: "bold", fontSize: 20 }}>
-            Ercan Ünal
-          </Text>
-          <Text style={{ color: "white" }}>unalercann@gmail.com</Text>
+        >
+          <Image
+            style={{ width: 80, height: 80, borderRadius: 40 }}
+            source={{
+              uri: "https://avatars.githubusercontent.com/u/44919993?v=4",
+            }}
+          />
+          <View style={{ marginLeft: 15, marginTop: 25 }}>
+            <Text style={{ color: "white", fontWeight: "bold", fontSize: 20 }}>
+              Ercan Ünal
+            </Text>
+            <Text style={{ color: "white" }}>unalercann@gmail.com</Text>
+          </View>
         </View>
-      </View>
-      <View
-        style={{
-          flexDirection: "row",
-          alignSelf: "center",
-          paddingTop: 10,
-          paddingBottom: 10,
-        }}
-      >
-        <Text style={{ paddingVertical: 6, paddingHorizontal: 6 }}>
-          İzledim (100)
-        </Text>
-        <Text style={{ paddingVertical: 6, paddingHorizontal: 6 }}>
-          İzleyeceğim (12)
-        </Text>
-        <Text style={{ paddingVertical: 6, paddingHorizontal: 6 }}>
-          İzliyorum (4)
-        </Text>
-      </View>
+        <View
+          style={{
+            flexDirection: "row",
+            alignSelf: "center",
+            paddingTop: 10,
+            paddingBottom: 10,
+          }}
+        >
+          <Text style={{ paddingVertical: 6, paddingHorizontal: 6 }}>
+            İzledim (100)
+          </Text>
+          <Text style={{ paddingVertical: 6, paddingHorizontal: 6 }}>
+            İzleyeceğim (12)
+          </Text>
+          <Text style={{ paddingVertical: 6, paddingHorizontal: 6 }}>
+            İzliyorum (4)
+          </Text>
+        </View>
 
-      <View
-        style={{
-          flexDirection: "row",
-          paddingTop: 14,
-          alignSelf: "center",
-          backgroundColor: "white",
-        }}
-      >
-        <SubTabBtn
-          text="Duvarım"
-          btnColor="black"
-          textColor="white"
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
-        <SubTabBtn
-          text="İncelemelerim"
-          btnColor="white"
-          textColor="black"
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
-        <SubTabBtn
-          text="Alıntılarım"
-          btnColor="white"
-          textColor="black"
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
-      </View>
-      <View style={{ marginTop: 15, flexDirection: "row" }}>
-        {activeTab === "Duvarım" && <MyWall />}
-        {activeTab === "İncelemelerim" && <MyReviews />}
-        {activeTab === "Alıntılarım" && <MyQuotes />}
-      </View>
-    </ScrollView>
+        <View
+          style={{
+            flexDirection: "row",
+            paddingTop: 14,
+            alignSelf: "center",
+            backgroundColor: "white",
+          }}
+        >
+          <SubTabBtn
+            text="Duvarım"
+            btnColor="black"
+            textColor="white"
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
+          <SubTabBtn
+            text="İncelemelerim"
+            btnColor="white"
+            textColor="black"
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
+          <SubTabBtn
+            text="Alıntılarım"
+            btnColor="white"
+            textColor="black"
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
+        </View>
+        <View style={{ marginTop: 15, flexDirection: "row" }}>
+          {activeTab === "Duvarım" && <MyWall />}
+          {activeTab === "İncelemelerim" && <MyReviews />}
+          {activeTab === "Alıntılarım" && <MyQuotes />}
+        </View>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -130,5 +132,8 @@ const styles = StyleSheet.create({
     height: 175,
     borderRadius: 15,
     marginHorizontal: 10,
+  },
+  container: {
+    backgroundColor: "#1e1e1e",
   },
 });
