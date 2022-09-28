@@ -126,7 +126,7 @@ export default function Home({ navigation }) {
             ))}
 
           {/* <Text>{search}</Text> */}
-          {/* <HomePostCardItem /> */}
+          <HomePostCardItem />
         </ScrollView>
       </View>
     </>

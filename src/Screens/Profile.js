@@ -54,13 +54,13 @@ export default function Profile() {
           }}
         >
           <Text style={{ paddingVertical: 6, paddingHorizontal: 6 }}>
-            İzledim (100)
+            i watched (100)
           </Text>
           <Text style={{ paddingVertical: 6, paddingHorizontal: 6 }}>
-            İzleyeceğim (12)
+            i will watch (12)
           </Text>
           <Text style={{ paddingVertical: 6, paddingHorizontal: 6 }}>
-            İzliyorum (4)
+            i'm watching (4)
           </Text>
         </View>
 
