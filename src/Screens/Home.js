@@ -42,12 +42,12 @@ export default function Home({ navigation }) {
 
   return (
     <>
-      {/* <SafeAreaView>
+      <SafeAreaView>
         <Header />
-      </SafeAreaView> */}
+      </SafeAreaView>
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <View>
+          <View style={styles.searchBar}>
             <SearchBar
               placeholder="Ara..."
               onChangeText={textSearch}
@@ -102,7 +102,7 @@ export default function Home({ navigation }) {
                   navigation.navigate("Details", { id: item.imdbID })
                 }
                 style={{
-                  backgroundColor: "#303337",
+                  backgroundColor: "#2E2E2E",
                   borderRadius: "5px",
                   margin: "5px",
                   flex: 1,
@@ -136,6 +136,9 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1e1e1e",
+    backgroundColor: "#121212",
   },
+  searchBar: {
+    paddingTop: 20,
+  }
 });

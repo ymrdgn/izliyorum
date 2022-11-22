@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   detailCard: {
     flexDirection: "row",
-    backgroundColor: "#303337",
+    backgroundColor: "#2E2E2E",
     color: "white",
     borderColor: "#58595a",
     borderRadius: "3%",

@@ -6,6 +6,7 @@ import SignIn from "./src/Screens/SignIn";
 import SignUp from "./src/Screens/SignUp";
 import { View, Text } from "react-native";
 import Homepage from "./src/Screens/HomePage";
+import Home from "./src/Screens/Home";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ export default function App() {
                 name={"Home"}
                 options={{ headerShown: false }}
                 component={DrawerNavigation}
+                // component={Home}
               />
             </>
           )}

@@ -83,7 +83,7 @@ export default function HomePostCardItem() {
 
 const styles = StyleSheet.create({
   flow: {
-    backgroundColor: "#303337",
+    backgroundColor: "#2E2E2E",
     borderColor: "#58595a",
     borderRadius: "3%",
     padding: "15px",
