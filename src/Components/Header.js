@@ -12,7 +12,7 @@ const Header = () => {
       <SafeAreaView>
         <View style={headerWrapper}>
           <Feather name='menu' size={20} color="#979797" />
-          <Text style={textStyling}>izli'yorum..</Text>
+          <Text style={textStyling}>izli'yorum....</Text>
           <TouchableOpacity style={iconStyling}>
             <Ionicons name="notifications" color="#979797" size={20} />
           </TouchableOpacity>
